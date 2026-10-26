@@ -1,0 +1,29 @@
+// Crie cada medida separadamente na tabela Contratos.
+// Sintaxe DAX internacional; ajuste separadores conforme sua instalação.
+Registros PNCP = DISTINCTCOUNT(Contratos[id])
+
+Valor global valido =
+DIVIDE(CALCULATE(SUM(Contratos[valor_centavos]),
+    KEEPFILTERS(NOT ISBLANK(Contratos[valor_centavos])),
+    KEEPFILTERS(Contratos[valor_centavos] >= 0)), 100)
+
+Com alertas =
+CALCULATE([Registros PNCP], FILTER(Contratos, LEN(COALESCE(Contratos[qualidade], "")) > 0))
+
+Percentual com alertas = DIVIDE([Com alertas], [Registros PNCP])
+
+Participacao fornecedor =
+DIVIDE([Valor global valido],
+    CALCULATE([Valor global valido], REMOVEFILTERS(Contratos[fornecedor], Contratos[fornecedor_id], Contratos[tipo_pessoa])))
+
+// Crie a tabela desconectada Referencia e selecione uma única data no slicer:
+Referencia = CALENDAR(DATE(2025,1,1), DATE(2030,12,31))
+
+// Exige uma única referência. Evita atualização silenciosa por TODAY().
+Vencem ate 90 dias =
+VAR Ref = SELECTEDVALUE(Referencia[Date])
+RETURN IF(ISBLANK(Ref), BLANK(),
+    CALCULATE([Registros PNCP], FILTER(Contratos,
+        Contratos[vigencia_valida] = 1 &&
+        NOT ISBLANK(Contratos[valor_centavos]) && Contratos[valor_centavos] >= 0 &&
+        Contratos[fim] >= Ref && Contratos[fim] <= Ref + 90)))

@@ -1,0 +1,31 @@
+{
+  "config": {
+    "orgao_cnpj": "15180714000104",
+    "orgao_nome": "Universidade Federal da Bahia",
+    "inicio": "20250101",
+    "fim": "20251231",
+    "referencia": "2026-10-26"
+  },
+  "coletado_em": "2026-10-26T16:26:39.071621+00:00",
+  "recebidos": 7278,
+  "unicos": 7278,
+  "duplicados": 0,
+  "paginas_sha256": {
+    "page_0001.json": "041b55f1a33d9f30f9be015a2821a1398a254bc06685c6e47a7312de3abdd11c",
+    "page_0002.json": "602a6afc8a31da1f02a50f724064027fb4173ab3a43491b3ff814eab16ebad9d",
+    "page_0003.json": "ff8acaab28f7ea5cfaef871ca900ed1b3befa69a963b3773ebdd9a23abfbfbe0",
+    "page_0004.json": "70048b4658b96e2d33471f20a06aaba8ec659953d699864b166ab8d5c3ace905",
+    "page_0005.json": "b2406eda2fe2dfa5984190c5a81217ddfd3d0a70e544b3f07d9cdad9b9bb3cd5",
+    "page_0006.json": "abd0d86f8a672f1085b67258f129e45bafa11c4e446135653e0c853df0341c08",
+    "page_0007.json": "e40d12f3c028716b48565ff4ef61e98c860bd67c4224e073b8fe75be86e6dffd",
+    "page_0008.json": "55d7aec01b16e66ed796e5d9e123c2f98054eee880e8d939574af443a6558ab9",
+    "page_0009.json": "05fa1d6afd167e3350fefeb896f84a32970e99a4309702793dc50c8e491c42e9",
+    "page_0010.json": "fa482fbb0b202ce97b226a2054dbbb2372b7fa00633608e5200d82ab202bc7dd",
+    "page_0011.json": "a240f499c07395b82fddb1356c08ea1fd73ad28caf0e2e2f5bcf30c238ec80cd",
+    "page_0012.json": "7b675fddf77c8abf50bd453f083c70179b23151bf5a236e163e872adf17cad76",
+    "page_0013.json": "5381e183ae159a3597ea9fea724f7b320c215a108d7032538c2e2d6c0e467ded",
+    "page_0014.json": "466262f2c93fbd98d1ef41c400c5275f430a0a5b5c9e26a4160b80d65a88cb5b",
+    "page_0015.json": "d01fd711fda9ca1201974ccfc3f444a8cb99f3a5a8955e9b489404436dda0cd6"
+  },
+  "endpoint": "https://pncp.gov.br/api/consulta/v1/contratos"
+}

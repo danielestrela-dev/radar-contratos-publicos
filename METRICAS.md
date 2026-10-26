@@ -1,0 +1,24 @@
+# Métricas e dicionário
+
+| Campo / indicador | Definição |
+|---|---|
+| id | Chave numeroControlePNCP, grão único da base |
+| publicacao / mes | Data e mês de dataPublicacaoPncp |
+| valor_centavos | valorGlobal × 100, Decimal com arredondamento HALF_UP; ausentes ficam nulos |
+| natureza | receita=true: receita; false: despesa; demais: não informada |
+| início / fim | Datas de vigência válidas no formato ISO |
+| vigencia_valida | Ambas presentes e fim maior ou igual ao início |
+| fornecedor_id | Identificador textual de PJ; demais agrupados sem identificação pessoal |
+| qualidade | Lista de alertas separados por ponto e vírgula |
+| Valor global válido | Soma de valores não negativos e não nulos, no filtro selecionado |
+| Registros PNCP | Quantidade de IDs únicos no filtro, inclusive com alertas |
+| Participação PJ | Valor do fornecedor PJ / total de valor válido do recorte, inclusive não-PJ no denominador |
+| Vencimento | Diferença em dias corridos entre fim e referência, incluindo hoje no intervalo 0–30 |
+| Até 90 dias | Soma das faixas exclusivas 0–30, 31–60, 61–90; somente valor válido e vigência consistente |
+| Com alertas | Registros com ao menos um alerta; não soma das ocorrências |
+
+O SQL mensal e de fornecedores usa apenas despesas com valor válido; o painel inicia com esse mesmo filtro. No painel, as demais naturezas podem ser selecionadas explicitamente. Qualidade considera todos os registros do filtro, inclusive os de valor inválido.
+
+Não se infere fraude, causalidade ou economia. Valor global não é desembolso; não soma valor acumulado nem parcelas. Datas de vigência não confirmam situação jurídica. A ausência de alerta não certifica exatidão. Fornecedores não-PJ/ausentes não entram no ranking individual, mas seus valores válidos entram no total. Não é possível medir pagamentos ou saldo com esta fonte isolada.
+
+As páginas brutas ficam locais e ignoradas pelo Git por conter identificadores pessoais da fonte. O painel publica apenas campos selecionados, sem CPF/nome de pessoas físicas nem objeto livre. Dados de PJ e identificadores PNCP permanecem auditáveis.
